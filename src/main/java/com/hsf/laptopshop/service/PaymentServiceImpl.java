@@ -16,8 +16,8 @@ import java.util.Map;
 @Service
 public class PaymentServiceImpl implements PaymentService{
 
-    private String vnp_SecretKey = PaymentConfig.secretKey;
-    private String payUrl = PaymentConfig.vnp_payurl;
+    private final String vnp_SecretKey = PaymentConfig.secretKey;
+    private final String payUrl = PaymentConfig.vnp_payurl;
 
     @Autowired
     private OrderRepository orderRepository;
