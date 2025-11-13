@@ -67,23 +67,78 @@ INSERT INTO user_profiles (user_id, full_name, phone, address) VALUES
                                                                    (9, 'Emma Vu', '0900000009', '34 Dien Bien Phu, Q3'),
                                                                    (10, 'Peter Ho', '0900000010', '101 Ly Tu Trong, Q1');
 
-INSERT INTO orders (user_profile_id, status, created_at, updated_at)
-VALUES
-    (2, 'PAID', '2025-11-01 10:30:00', '2025-11-01 10:30:00'),
-    (3, 'PAID', '2025-11-05 14:15:00', '2025-11-05 14:15:00'),
-    (6, 'CART', '2025-11-09 18:00:00', '2025-11-09 18:00:00');
+-- --- NĂM 2023 ---
+INSERT INTO orders (user_profile_id, status, created_at, updated_at) VALUES (2, 'PAID', '2023-03-10 10:00:00', '2023-03-10 10:00:00'); -- Order ID = 1
+INSERT INTO orders_laptops (order_entity_order_id, laptops_laptop_id, quantity) VALUES (1, 12, 5); -- 5 cái Acer Aspire
+INSERT INTO invoices (order_id, total_amount, status, payment_method) VALUES (1, 49950000, 'PAID', 'VNPAY');
 
--- Chèn chi tiết sản phẩm (KHÔNG cần chèn id, DB sẽ tự tạo)
--- (Script này giả định 3 đơn hàng trên có ID là 1, 2, 3)
-INSERT INTO orders_laptops (order_entity_order_id, laptops_laptop_id, quantity)
-VALUES
-    (1, 1, 1), -- Đơn 1: 1 cái MacBook Air M2 (ID=1)
-    (1, 3, 2), -- Đơn 1: 2 cái Dell XPS 13 (ID=3)
-    (2, 10, 1), -- Đơn 2: 1 cái Asus TUF F15 (ID=10)
-    (3, 1, 1); -- Đơn 3 (Giỏ hàng): 1 cái MacBook Air M2 (ID=1)
+INSERT INTO orders (user_profile_id, status, created_at, updated_at) VALUES (3, 'PAID', '2023-08-15 11:00:00', '2023-08-15 11:00:00'); -- Order ID = 2
+INSERT INTO orders_laptops (order_entity_order_id, laptops_laptop_id, quantity) VALUES (2, 6, 2); -- 2 cái HP Pavilion
+INSERT INTO invoices (order_id, total_amount, status, payment_method) VALUES (2, 29180000, 'PAID', 'VNPAY');
 
--- Chèn hóa đơn (KHÔNG cần chèn invoice_id)
-INSERT INTO invoices (order_id, total_amount, status)
-VALUES
-    (1, 89990000, 'PAID'), -- Hóa đơn cho Đơn 1
-    (2, 19990000, 'PAID'); -- Hóa đơn cho Đơn 2
+-- --- NĂM 2024 ---
+INSERT INTO orders (user_profile_id, status, created_at, updated_at) VALUES (4, 'PAID', '2024-02-20 12:00:00', '2024-02-20 12:00:00'); -- Order ID = 3
+INSERT INTO orders_laptops (order_entity_order_id, laptops_laptop_id, quantity) VALUES (3, 10, 3); -- 3 cái Asus TUF
+INSERT INTO invoices (order_id, total_amount, status, payment_method) VALUES (3, 59970000, 'PAID', 'VNPAY');
+
+INSERT INTO orders (user_profile_id, status, created_at, updated_at) VALUES (5, 'PAID', '2024-07-25 13:00:00', '2024-07-25 13:00:00'); -- Order ID = 4
+INSERT INTO orders_laptops (order_entity_order_id, laptops_laptop_id, quantity) VALUES (4, 1, 2); -- 2 cái MacBook Air
+INSERT INTO invoices (order_id, total_amount, status, payment_method) VALUES (4, 49980000, 'PAID', 'VNPAY');
+
+INSERT INTO orders (user_profile_id, status, created_at, updated_at) VALUES (6, 'PAID', '2024-11-18 14:00:00', '2024-11-18 14:00:00'); -- Order ID = 5
+INSERT INTO orders_laptops (order_entity_order_id, laptops_laptop_id, quantity) VALUES (5, 3, 1); -- 1 cái Dell XPS
+INSERT INTO invoices (order_id, total_amount, status, payment_method) VALUES (5, 32500000, 'PAID', 'VNPAY');
+
+-- --- NĂM 2025 (12 THÁNG) ---
+-- (Giả sử ID bắt đầu từ 6)
+INSERT INTO orders (user_profile_id, status, created_at, updated_at) VALUES (2, 'PAID', '2025-01-20 10:00:00', '2025-01-20 10:00:00');
+INSERT INTO orders_laptops (order_entity_order_id, laptops_laptop_id, quantity) VALUES (6, 10, 1);
+INSERT INTO invoices (order_id, total_amount, status, payment_method) VALUES (6, 19990000, 'PAID', 'VNPAY');
+
+INSERT INTO orders (user_profile_id, status, created_at, updated_at) VALUES (3, 'PAID', '2025-02-15 11:00:00', '2025-02-15 11:00:00');
+INSERT INTO orders_laptops (order_entity_order_id, laptops_laptop_id, quantity) VALUES (7, 8, 1);
+INSERT INTO invoices (order_id, total_amount, status, payment_method) VALUES (7, 45000000, 'PAID', 'VNPAY');
+
+INSERT INTO orders (user_profile_id, status, created_at, updated_at) VALUES (4, 'PAID', '2025-03-10 12:00:00', '2025-03-10 12:00:00');
+INSERT INTO orders_laptops (order_entity_order_id, laptops_laptop_id, quantity) VALUES (8, 12, 2);
+INSERT INTO invoices (order_id, total_amount, status, payment_method) VALUES (8, 19980000, 'PAID', 'VNPAY');
+
+INSERT INTO orders (user_profile_id, status, created_at, updated_at) VALUES (5, 'PAID', '2025-04-25 13:00:00', '2025-04-25 13:00:00');
+INSERT INTO orders_laptops (order_entity_order_id, laptops_laptop_id, quantity) VALUES (9, 6, 1);
+INSERT INTO invoices (order_id, total_amount, status, payment_method) VALUES (9, 14590000, 'PAID', 'VNPAY');
+
+INSERT INTO orders (user_profile_id, status, created_at, updated_at) VALUES (6, 'PAID', '2025-05-18 14:00:00', '2025-05-18 14:00:00');
+INSERT INTO orders_laptops (order_entity_order_id, laptops_laptop_id, quantity) VALUES (10, 5, 1);
+INSERT INTO invoices (order_id, total_amount, status, payment_method) VALUES (10, 55990000, 'PAID', 'VNPAY');
+
+INSERT INTO orders (user_profile_id, status, created_at, updated_at) VALUES (2, 'PAID', '2025-06-15 10:30:00', '2025-06-15 10:30:00');
+INSERT INTO orders_laptops (order_entity_order_id, laptops_laptop_id, quantity) VALUES (11, 1, 1);
+INSERT INTO invoices (order_id, total_amount, status, payment_method) VALUES (11, 24990000, 'PAID', 'VNPAY');
+
+INSERT INTO orders (user_profile_id, status, created_at, updated_at) VALUES (3, 'PAID', '2025-07-10 14:15:00', '2025-07-10 14:15:00');
+INSERT INTO orders_laptops (order_entity_order_id, laptops_laptop_id, quantity) VALUES (12, 3, 2);
+INSERT INTO invoices (order_id, total_amount, status, payment_method) VALUES (12, 65000000, 'PAID', 'VNPAY');
+
+INSERT INTO orders (user_profile_id, status, created_at, updated_at) VALUES (4, 'PAID', '2025-08-20 09:00:00', '2025-08-20 09:00:00');
+INSERT INTO orders_laptops (order_entity_order_id, laptops_laptop_id, quantity) VALUES (13, 9, 1);
+INSERT INTO invoices (order_id, total_amount, status, payment_method) VALUES (13, 26990000, 'PAID', 'VNPAY');
+
+INSERT INTO orders (user_profile_id, status, created_at, updated_at) VALUES (5, 'PAID', '2025-09-05 11:20:00', '2025-09-05 11:20:00');
+INSERT INTO orders_laptops (order_entity_order_id, laptops_laptop_id, quantity) VALUES (14, 11, 1);
+INSERT INTO invoices (order_id, total_amount, status, payment_method) VALUES (14, 16990000, 'PAID', 'VNPAY');
+
+INSERT INTO orders (user_profile_id, status, created_at, updated_at) VALUES (2, 'PAID', '2025-10-18 16:45:00', '2025-10-18 16:45:00');
+INSERT INTO orders_laptops (order_entity_order_id, laptops_laptop_id, quantity) VALUES (15, 1, 1), (15, 10, 1);
+INSERT INTO invoices (order_id, total_amount, status, payment_method) VALUES (15, 44980000, 'PAID', 'VNPAY');
+
+INSERT INTO orders (user_profile_id, status, created_at, updated_at) VALUES (3, 'PAID', '2025-11-02 12:00:00', '2025-11-02 12:00:00');
+INSERT INTO orders_laptops (order_entity_order_id, laptops_laptop_id, quantity) VALUES (16, 15, 1);
+INSERT INTO invoices (order_id, total_amount, status, payment_method) VALUES (16, 17990000, 'PAID', 'VNPAY');
+
+INSERT INTO orders (user_profile_id, status, created_at, updated_at) VALUES (4, 'PAID', '2025-12-10 19:00:00', '2025-12-10 19:00:00');
+INSERT INTO orders_laptops (order_entity_order_id, laptops_laptop_id, quantity) VALUES (17, 2, 1);
+INSERT INTO invoices (order_id, total_amount, status, payment_method) VALUES (17, 39990000, 'PAID', 'VNPAY');
+
+-- GIỎ HÀNG (Sẽ không tính vào doanh thu)
+INSERT INTO orders (user_profile_id, status, created_at, updated_at) VALUES (6, 'CART', '2025-11-13 18:00:00', '2025-11-13 18:00:00');
+INSERT INTO orders_laptops (order_entity_order_id, laptops_laptop_id, quantity) VALUES (18, 7, 1);

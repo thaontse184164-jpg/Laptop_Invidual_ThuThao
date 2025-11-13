@@ -2,6 +2,7 @@ package com.hsf.laptopshop.service;
 
 import com.hsf.laptopshop.dto.OrderSimpleDTO;
 import com.hsf.laptopshop.repository.RevenueByMonthProjection;
+import com.hsf.laptopshop.repository.RevenueByYearProjection;
 import com.hsf.laptopshop.repository.TopBrandProjection;
 import com.hsf.laptopshop.repository.TopLaptopProjection;
 import org.springframework.stereotype.Service;
@@ -16,7 +17,11 @@ public interface StatsService {
     public CompletableFuture<Long> countTotalUsers();
     public CompletableFuture<Long> countTotalOrders();
     public CompletableFuture<List<RevenueByMonthProjection>> getRevenueByMonth(LocalDateTime s, LocalDateTime e);
+    public CompletableFuture<List<RevenueByYearProjection>> getRevenueByYear();
+
     public CompletableFuture<List<TopLaptopProjection>> getTopLaptops(LocalDateTime s, LocalDateTime e);
     public CompletableFuture<List<TopBrandProjection>> getTopBrands(LocalDateTime s, LocalDateTime e);
     public CompletableFuture<List<OrderSimpleDTO>> getRecentOrders();
+
+
 }

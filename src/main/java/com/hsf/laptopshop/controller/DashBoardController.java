@@ -61,6 +61,6 @@ public class DashBoardController {
 
         // 9. Trả về tên của file template
         // (Ví dụ: file "dashboard.html" nằm trong /templates/admin/)
-        return "/admin/dashboard";
+        return "admin/dashboard";
     }
 }

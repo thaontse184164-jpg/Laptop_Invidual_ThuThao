@@ -26,8 +26,6 @@
             border-radius: 0.375rem; font-weight: 500;
         }
         .date-picker button:hover { background-color: #4338CA; }
-
-        /* CSS cho bảng Top Products (Thêm mới) */
         .product-thumbnail {
             width: 40px; height: 40px;
             object-fit: cover;
@@ -39,6 +37,7 @@
 <body class="bg-gray-100 font-sans">
 
 <div class="flex h-screen bg-gray-100">
+    <!-- Sidebar -->
     <aside class="hidden md:flex flex-col w-64 bg-gray-800 text-white">
         <div class="flex items-center justify-center h-16 border-b border-gray-700">
             <svg class="w-8 h-8 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
@@ -49,7 +48,7 @@
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
                 <span class="ml-4">Dashboard</span>
             </a>
-            <a href="/admin/orders" class="flex items-center px-4 py-2.5 text-sm font-medium rounded-lg transition-colors duration-200 text-gray-300 hover:bg-gray-700 hover:text-white">
+            <a th:href="@{/admin/orders}" class="flex items-center px-4 py-2.5 text-sm font-medium rounded-lg transition-colors duration-200 text-gray-300 hover:bg-gray-700 hover:text-white">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path></svg>
                 <span class="ml-4">Đơn hàng</span>
             </a>
@@ -57,89 +56,84 @@
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
                 <span class="ml-4">Khuyến mãi</span>
             </a>
-            <a href="/admin/laptops" class="flex items-center px-4 py-2.5 text-sm font-medium rounded-lg transition-colors duration-200 text-gray-300 hover:bg-gray-700 hover:text-white">
+            <a th:href="@{/admin/laptops}" class="flex items-center px-4 py-2.5 text-sm font-medium rounded-lg transition-colors duration-200 text-gray-300 hover:bg-gray-700 hover:text-white">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
                 <span class="ml-4">Sản phẩm</span>
             </a>
-            <a href="/admin/brands" class="flex items-center px-4 py-2.5 text-sm font-medium rounded-lg transition-colors duration-200 text-gray-300 hover:bg-gray-700 hover:text-white">
+            <a th:href="@{/admin/brands}" class="flex items-center px-4 py-2.5 text-sm font-medium rounded-lg transition-colors duration-200 text-gray-300 hover:bg-gray-700 hover:text-white">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"></path></svg>
                 <span class="ml-4">Thương hiệu</span>
             </a>
-            <a href="/admin/series" class="flex items-center px-4 py-2.5 text-sm font-medium rounded-lg transition-colors duration-200 text-gray-300 hover:bg-gray-700 hover:text-white">
+            <a th:href="@{/admin/series}" class="flex items-center px-4 py-2.5 text-sm font-medium rounded-lg transition-colors duration-200 text-gray-300 hover:bg-gray-700 hover:text-white">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
                 <span class="ml-4">Dòng Laptop</span>
             </a>
         </nav>
+        <!-- (User profile) -->
     </aside>
 
+    <!-- Main Content -->
     <div class="flex-1 flex flex-col overflow-hidden">
         <header class="bg-white shadow-sm">
-            <div class="flex items-center justify-between h-16 px-4 sm:px-6 lg:px-8">
-                <button id="hamburger-button" class="md:hidden text-gray-500">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
-                </button>
-                <div class="flex-1 flex justify-end">
-                </div>
-            </div>
+            <!-- (Header content) -->
         </header>
 
         <main class="flex-1 overflow-x-hidden overflow-y-auto bg-gray-100 p-6">
             <h1 class="text-3xl font-bold text-gray-800 mb-2">Chào mừng trở lại, Admin!</h1>
             <p class="text-gray-600 mb-8">Đây là những gì đang diễn ra hôm nay.</p>
 
+            <!-- Form Lọc (Vẫn lọc cho biểu đồ tháng) -->
             <form th:action="@{/admin/dashboard}" method="get" class="date-picker">
                 <label for="startDate">Từ ngày:</label>
                 <input type="date" id="startDate" name="startDate" th:value="${startDate}">
                 <label for="endDate">Đến ngày:</label>
                 <input type="date" id="endDate" name="endDate" th:value="${endDate}">
-                <button id="filterButton" type="submit">Lọc</button>
+                <button id="filterButton" type="submit">Lọc (Theo Tháng)</button>
             </form>
 
+            <!-- Stats Cards -->
             <div id="stats-cards" class="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-3">
                 <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm">
-                    <div class="flex items-center justify-between">
-                        <div>
-                            <p class="text-sm font-medium text-gray-500">Tổng Sản Phẩm</p>
-                            <p class="text-2xl font-bold text-gray-800" th:text="${totalProducts}">0</p>
-                        </div>
-                        <div class="p-3 rounded-full bg-yellow-100">
-                            <svg class="w-6 h-6 text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
-                        </div>
+                    <div>
+                        <p class="text-sm font-medium text-gray-500">Tổng Sản Phẩm</p>
+                        <p class="text-2xl font-bold text-gray-800" th:text="${totalProducts}">0</p>
                     </div>
                 </div>
                 <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm">
-                    <div class="flex items-center justify-between">
-                        <div>
-                            <p class="text-sm font-medium text-gray-500">Tổng Người Dùng</p>
-                            <p class="text-2xl font-bold text-gray-800" th:text="${totalUsers}">0</p>
-                        </div>
-                        <div class="p-3 rounded-full bg-blue-100">
-                            <svg class="w-6 h-6 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M15 21a6 6 0 00-9-5.197m0 0A5.975 5.975 0 0112 13a5.975 5.975 0 013-1.197"></path></svg>
-                        </div>
+                    <div>
+                        <p class="text-sm font-medium text-gray-500">Tổng Người Dùng</p>
+                        <p class="text-2xl font-bold text-gray-800" th:text="${totalUsers}">0</p>
                     </div>
                 </div>
                 <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm">
-                    <div class="flex items-center justify-between">
-                        <div>
-                            <p class="text-sm font-medium text-gray-500">Tổng Đơn Hàng</p>
-                            <p class="text-2xl font-bold text-gray-800" th:text="${totalOrders}">0</p>
-                        </div>
-                        <div class="p-3 rounded-full bg-green-100">
-                            <svg class="w-6 h-6 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path></svg>
-                        </div>
+                    <div>
+                        <p class="text-sm font-medium text-gray-500">Tổng Đơn Hàng</p>
+                        <p class="text-2xl font-bold text-gray-800" th:text="${totalOrders}">0</p>
                     </div>
                 </div>
             </div>
 
+            <!-- Main Grid (Charts and Tables) -->
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
 
-                <div class="lg:col-span-3 bg-white p-6 rounded-xl border border-gray-200 shadow-sm">
-                    <h3 class="text-lg font-semibold text-gray-800 mb-4">Tổng quan doanh thu</h3>
+                <!-- Biểu đồ Doanh Thu (Theo Tháng) -->
+                <div class="lg:col-span-2 bg-white p-6 rounded-xl border border-gray-200 shadow-sm">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4" th:text="'Tổng quan doanh thu (Năm ' + ${startDate.getYear()} + ')'"></h3>
                     <div class="h-72">
-                        <canvas id="salesChart"></canvas>
+                        <canvas id="monthlySalesChart"></canvas> <!-- Đổi ID -->
                     </div>
                 </div>
 
+                <!-- === BIỂU ĐỒ MỚI (THEO NĂM) === -->
+                <div class="lg:col-span-1 bg-white p-6 rounded-xl border border-gray-200 shadow-sm">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4">Doanh thu theo năm</h3>
+                    <div class="h-72">
+                        <canvas id="yearlySalesChart"></canvas> <!-- ID MỚI -->
+                    </div>
+                </div>
+
+
+                <!-- Bảng Top Sản Phẩm (2/3 cột) -->
                 <div class="lg:col-span-2 bg-white p-6 rounded-xl border border-gray-200 shadow-sm">
                     <h3 class="text-lg font-semibold text-gray-800 mb-4">Sản phẩm bán chạy</h3>
                     <div class="overflow-y-auto h-72">
@@ -168,6 +162,7 @@
                     </div>
                 </div>
 
+                <!-- Bảng Đơn Hàng Gần Đây (1/3 cột) -->
                 <div class="lg:col-span-1 bg-white p-6 rounded-xl border border-gray-200 shadow-sm">
                     <h3 class="text-lg font-semibold text-gray-800 mb-4">Đơn hàng gần đây</h3>
                     <ul id="recent-orders-list" class="space-y-4 overflow-y-auto h-72">
@@ -183,7 +178,6 @@
                                 <p class="text-sm font-medium text-gray-800"
                                    th:text="${#numbers.formatDecimal( (order.totalAmount != null ? order.totalAmount : 0), 0, 'COMMA', 0, 'POINT') + ' đ'}">
                                 </p>
-
                                 <span class="text-xs text-gray-500" th:text="${#temporals.format(order.createdAt, 'dd/MM/yyyy')}">10/11/2025</span>
                             </div>
                         </li>
@@ -198,79 +192,122 @@
     </div>
 </div>
 
+<!-- === SỬA LẠI TOÀN BỘ SCRIPT ĐỂ VẼ 2 BIỂU ĐỒ === -->
 <script th:inline="javascript">
     /*<![CDATA[*/
 
     document.addEventListener('DOMContentLoaded', () => {
 
-        // --- 1. LẤY DỮ LIỆU BIỂU ĐỒ TỪ THYMELEAF ---
-        // Dữ liệu này được truyền từ DashBoardController.java qua biến ${revenueChartData}
-        const revenueData = /*[[${revenueChartData}]]*/ [];
+        // === DỮ LIỆU TỪ THYMELEAF ===
+        const monthlyData = /*[[${revenueChartData}]]*/ [];
+        const yearlyData = /*[[${yearlyChartData}]]*/ [];
 
-        // --- 2. LẤY CANVAS ---
-        const salesChartCanvas = document.getElementById('salesChart');
-        if (!salesChartCanvas) {
-            console.error("Không tìm thấy canvas 'salesChart'.");
-            return;
-        }
-        if (!revenueData) {
-            console.error("Không có dữ liệu 'revenueChartData'.");
-            return;
-        }
+        // === BIỂU ĐỒ 1: DOANH THU THEO THÁNG ===
+        const monthlyChartCanvas = document.getElementById('monthlySalesChart'); // <-- Đổi ID
+        if (monthlyChartCanvas && monthlyData) {
+            const monthlyCtx = monthlyChartCanvas.getContext('2d');
 
-        // --- 3. CHUẨN BỊ DỮ LIỆU CHO BIỂU ĐỒ ---
-        // File RevenueByMonthProjection.java có 2 trường: getMonth() và getTotalRevenue()
-        // Thymeleaf sẽ chuyển nó thành JSON: [{ month: 6, totalRevenue: 120000000 }, ...]
-        const labels = revenueData.map(item => `Tháng ${item.month}`);
-        const revenues = revenueData.map(item => item.totalRevenue); // DÙNG totalRevenue
+            // Sửa lỗi: dùng thuộc tính .month và .totalRevenue
+            const monthlyLabels = monthlyData.map(item => `Tháng ${item.month}`);
+            const monthlyRevenues = monthlyData.map(item => item.totalRevenue);
 
-        // --- 4. RENDER BIỂU ĐỒ ---
-        const ctx = salesChartCanvas.getContext('2d');
-        if (!ctx) {
-            console.error("Không thể lấy context 2d từ canvas");
-            return;
-        }
-
-        new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: labels,
-                datasets: [{
-                    label: 'Doanh Thu (VND)',
-                    data: revenues,
-                    borderColor: 'rgb(79, 70, 229)',
-                    backgroundColor: 'rgba(79, 70, 229, 0.1)',
-                    fill: true,
-                    tension: 0.4,
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        ticks: {
-                            // Format tiền tệ (ví dụ: 120,000,000 -> 120 tr)
-                            callback: function(value) {
-                                return (Number(value) / 1000000).toLocaleString('vi-VN') + ' tr';
+            new Chart(monthlyCtx, {
+                type: 'line', // Biểu đồ đường
+                data: {
+                    labels: monthlyLabels,
+                    datasets: [{
+                        label: 'Doanh Thu (VND)',
+                        data: monthlyRevenues,
+                        borderColor: 'rgb(79, 70, 229)',
+                        backgroundColor: 'rgba(79, 70, 229, 0.1)',
+                        fill: true,
+                        tension: 0.4,
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                callback: function(value) {
+                                    return (Number(value) / 1000000).toLocaleString('vi-VN') + ' tr';
+                                }
                             }
                         }
-                    }
-                },
-                plugins: { legend: { display: true } }
-            }
-        });
-
-        // --- 5. (Giữ lại) Xử lý nút hamburger cho mobile ---
-        const hamburgerButton = document.getElementById('hamburger-button');
-        // (Phần mobile-menu không có trong file của bạn, nhưng tôi cứ để code check)
-        const mobileMenu = document.getElementById('mobile-menu');
-        if(hamburgerButton && mobileMenu) {
-            hamburgerButton.addEventListener('click', () => {
-                mobileMenu.classList.toggle('hidden');
+                    },
+                    plugins: { legend: { display: true } }
+                }
             });
+        } else {
+            console.error("Không tìm thấy canvas 'monthlySalesChart' hoặc 'revenueChartData'.");
         }
+
+        // === BIỂU ĐỒ 2: DOANH THU THEO NĂM ===
+        const yearlyChartCanvas = document.getElementById('yearlySalesChart');
+        if (yearlyChartCanvas && yearlyData) {
+            const yearlyCtx = yearlyChartCanvas.getContext('2d');
+
+            // Sửa lỗi: dùng thuộc tính .year và .totalRevenue
+            const yearlyLabels = yearlyData.map(item => `Năm ${item.year}`);
+            const yearlyRevenues = yearlyData.map(item => item.totalRevenue);
+
+            new Chart(yearlyCtx, {
+                type: 'bar', // Biểu đồ cột
+                data: {
+                    labels: yearlyLabels,
+                    datasets: [{
+                        label: 'Doanh Thu (VND)',
+                        data: yearlyRevenues,
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(75, 192, 192, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgb(255, 99, 132)',
+                            'rgb(54, 162, 235)',
+                            'rgb(75, 192, 192)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                callback: function(value) {
+                                    return (Number(value) / 1000000).toLocaleString('vi-VN') + ' tr';
+                                }
+                            }
+                        }
+                    },
+                    plugins: { legend: { display: false } } // Ẩn legend cho gọn
+                }
+            });
+        } else {
+            console.error("Không tìm thấy canvas 'yearlySalesChart' hoặc 'yearlyChartData'.");
+        }
+
+
+        // --- Xử lý Sidebar Mobile ---
+        const hamburgerButton = document.getElementById('hamburger-button');
+        const closeSidebarButton = document.getElementById('close-sidebar-button');
+        const mobileSidebar = document.getElementById('mobile-sidebar');
+        const mobileSidebarOverlay = document.getElementById('mobile-sidebar-overlay');
+
+        const toggleSidebar = () => {
+            mobileSidebar?.classList.toggle('-translate-x-full');
+            mobileSidebarOverlay?.classList.toggle('hidden');
+        };
+
+        hamburgerButton?.addEventListener('click', toggleSidebar);
+        closeSidebarButton?.addEventListener('click', toggleSidebar);
+        mobileSidebarOverlay?.addEventListener('click', toggleSidebar);
     });
 
     /*]]>*/

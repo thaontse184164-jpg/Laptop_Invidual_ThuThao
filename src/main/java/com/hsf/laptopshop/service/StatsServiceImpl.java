@@ -58,9 +58,14 @@ public class StatsServiceImpl implements StatsService {
 
     @Override
     @Async
+    public CompletableFuture<List<RevenueByYearProjection>> getRevenueByYear() {
+        return CompletableFuture.completedFuture(invoiceRepository.findRevenueByYear());
+    }
+
+    @Override
+    @Async
     public CompletableFuture<List<TopLaptopProjection>> getTopLaptops(LocalDateTime s, LocalDateTime e) {
         Pageable top5 = PageRequest.of(0, 5);
-        // Sửa ở đây:
         return CompletableFuture.completedFuture(orderLaptopRepository.findTopSellingLaptops(s,e,top5));
     }
 
@@ -68,7 +73,6 @@ public class StatsServiceImpl implements StatsService {
     @Async
     public CompletableFuture<List<TopBrandProjection>> getTopBrands(LocalDateTime s, LocalDateTime e) {
         Pageable top5 = PageRequest.of(0, 5);
-        // Sửa ở đây:
         return CompletableFuture.completedFuture(orderLaptopRepository.findTopSellingBrands(s,e,top5));
     }
 

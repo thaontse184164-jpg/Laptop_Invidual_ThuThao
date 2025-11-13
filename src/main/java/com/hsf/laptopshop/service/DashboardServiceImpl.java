@@ -38,6 +38,7 @@ public class DashboardServiceImpl implements DashboardService {
             dashboardDTO.setRevenueChartData(revenueCharts.get());
             dashboardDTO.setTopLaptops(topLaptops.get());
             dashboardDTO.setTopBrands(topBrands.get());
+
             dashboardDTO.setRecentOrders(recentOrders.get());
         }catch(Exception e){
             throw new RuntimeException("Error fetching dashboard data", e);

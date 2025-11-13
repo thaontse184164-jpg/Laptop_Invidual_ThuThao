@@ -1,6 +1,7 @@
 package com.hsf.laptopshop.dto;
 
 import com.hsf.laptopshop.repository.RevenueByMonthProjection;
+import com.hsf.laptopshop.repository.RevenueByYearProjection;
 import com.hsf.laptopshop.repository.TopBrandProjection;
 import com.hsf.laptopshop.repository.TopLaptopProjection;
 import jakarta.persistence.Access;
@@ -25,4 +26,6 @@ public class DashboardDTO {
     List<TopLaptopProjection> topLaptops;
     List<TopBrandProjection> topBrands;
     List<OrderSimpleDTO> recentOrders;
+
+    List<RevenueByYearProjection> yearlyChartData;
 }
