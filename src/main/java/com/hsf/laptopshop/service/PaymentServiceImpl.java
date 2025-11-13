@@ -16,8 +16,8 @@ import java.util.Map;
 @Service
 public class PaymentServiceImpl implements PaymentService{
 
-    private String vnp_SecretKey = PaymentConfig.secretKey;
-    private String payUrl = PaymentConfig.vnp_payurl;
+    private final String vnp_SecretKey = PaymentConfig.secretKey;
+    private final String payUrl = PaymentConfig.vnp_payurl;
 
     @Autowired
     private OrderRepository orderRepository;
@@ -55,14 +55,8 @@ public class PaymentServiceImpl implements PaymentService{
         Map<String, String> vnp_ParamsMap = vnpayConfig.getVnPayConfig();
         vnp_ParamsMap.put("vnp_Amount", String.valueOf(amount));
         vnp_ParamsMap.put("vnp_IpAddr", "127.0.0.1");
-        
-        // Generate unique transaction reference: timestamp + invoice ID
-        // This ensures each payment attempt gets a unique vnp_TxnRef even with same invoice
-        String vnp_TxnRef = System.currentTimeMillis() + "" + invoice.getInvoiceId();
-        vnp_ParamsMap.put("vnp_TxnRef", vnp_TxnRef);
-        
-        // Store invoice ID in OrderInfo so we can retrieve it in callback
-        vnp_ParamsMap.put("vnp_OrderInfo", "Invoice:" + invoice.getInvoiceId() + ",Order:" + orderInfo.getOrderId());
+        vnp_ParamsMap.put("vnp_TxnRef", invoice.getInvoiceId().toString()+PaymentConfig.getRandomNumber(8));
+        vnp_ParamsMap.put("vnp_OrderInfo", "Pay order " + orderInfo.getOrderId());
         vnp_ParamsMap.put("vnp_OrderType", "billpayment");
         vnp_ParamsMap.put("vnp_Locale", "vn");
         vnp_ParamsMap.put("vnp_ReturnUrl", PaymentConfig.vnp_returnurl);
@@ -87,44 +81,22 @@ public class PaymentServiceImpl implements PaymentService{
     @Override
     public PaymentResponse handlePaymentCallback(Map<String, String> allParams) {
         String responseCode = allParams.get("vnp_ResponseCode");
-        String orderInfo = allParams.get("vnp_OrderInfo");
-        
-        // Parse OrderInfo: "Invoice:123,Order:456"
-        Long invoiceId = null;
-        Long orderId = null;
-        try {
-            String[] parts = orderInfo.split(",");
-            for (String part : parts) {
-                if (part.startsWith("Invoice:")) {
-                    invoiceId = Long.parseLong(part.substring(8));
-                } else if (part.startsWith("Order:")) {
-                    orderId = Long.parseLong(part.substring(6));
-                }
-            }
-        } catch (Exception e) {
-            // Fallback to old format if parsing fails
-            orderId = Long.parseLong(orderInfo.replaceAll("\\D+", ""));
-        }
-        
+        String orderId = allParams.get("vnp_OrderInfo").replaceAll("\\D+", "");
         BigDecimal amount = BigDecimal.valueOf(Long.parseLong(allParams.get("vnp_Amount"))).divide(BigDecimal.valueOf(100));
-        
-        // Find invoice
-        InvoiceEntity invoice = invoiceRepository.findById(invoiceId).
-                orElseThrow(() -> new RuntimeException("Payment not found"));
-        
-        // Get order ID from invoice if not parsed from OrderInfo
-        if (orderId == null) {
-            orderId = invoice.getOrder().getOrderId();
-        }
-        
+        String vnp_TxnRef = allParams.get("vnp_TxnRef");
+        String firstChar = vnp_TxnRef.substring(0, 1);
+        Long invoiceId = Long.parseLong(firstChar);
+//        InvoiceEntity invoice = invoiceRepository.findById(invoiceId).
+//                orElseThrow(() -> new RuntimeException("Payment not found with id: " + vnp_TxnRef));
+
         if(responseCode.equals("00")) {
-            invoiceService.MarkInvoiceAsPaid(invoiceId, orderId, amount);
+            invoiceService.MarkInvoiceAsPaid(invoiceId, Long.parseLong(orderId), amount);
         } else {
             System.out.println("Payment failed with response code: " + responseCode);
         }
         
         return PaymentResponse.builder()
-                .orderId(orderId)
+                .orderId(Long.parseLong(orderId))
                 .invoiceId(invoiceId)
                 .amount(amount)
                 .method("online")

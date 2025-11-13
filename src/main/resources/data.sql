@@ -67,30 +67,35 @@ INSERT INTO user_profiles (user_id, full_name, phone, address) VALUES
                                                                    (9, 'Emma Vu', '0900000009', '34 Dien Bien Phu, Q3'),
                                                                    (10, 'Peter Ho', '0900000010', '101 Ly Tu Trong, Q1');
 
+INSERT INTO orders (user_profile_id, status, created_at, updated_at)
+VALUES
+    (2, 'PAID', '2025-11-01 10:30:00', '2025-11-01 10:30:00'),
+    (3, 'PAID', '2025-11-05 14:15:00', '2025-11-05 14:15:00'),
+    (6, 'CART', '2025-11-09 18:00:00', '2025-11-09 18:00:00');
+
 -- --- NĂM 2023 ---
-INSERT INTO orders (user_profile_id, status, created_at, updated_at) VALUES (2, 'PAID', '2023-03-10 10:00:00', '2023-03-10 10:00:00'); -- Order ID = 1
-INSERT INTO orders_laptops (order_entity_order_id, laptops_laptop_id, quantity) VALUES (1, 12, 5); -- 5 cái Acer Aspire
+INSERT INTO orders (user_profile_id, status, created_at, updated_at) VALUES (2, 'PAID', '2023-03-10 10:00:00', '2023-03-10 10:00:00');
+INSERT INTO orders_laptops (order_entity_order_id, laptops_laptop_id, quantity) VALUES (1, 12, 5);
 INSERT INTO invoices (order_id, total_amount, status, payment_method) VALUES (1, 49950000, 'PAID', 'VNPAY');
 
-INSERT INTO orders (user_profile_id, status, created_at, updated_at) VALUES (3, 'PAID', '2023-08-15 11:00:00', '2023-08-15 11:00:00'); -- Order ID = 2
-INSERT INTO orders_laptops (order_entity_order_id, laptops_laptop_id, quantity) VALUES (2, 6, 2); -- 2 cái HP Pavilion
+INSERT INTO orders (user_profile_id, status, created_at, updated_at) VALUES (3, 'PAID', '2023-08-15 11:00:00', '2023-08-15 11:00:00');
+INSERT INTO orders_laptops (order_entity_order_id, laptops_laptop_id, quantity) VALUES (2, 6, 2);
 INSERT INTO invoices (order_id, total_amount, status, payment_method) VALUES (2, 29180000, 'PAID', 'VNPAY');
 
 -- --- NĂM 2024 ---
-INSERT INTO orders (user_profile_id, status, created_at, updated_at) VALUES (4, 'PAID', '2024-02-20 12:00:00', '2024-02-20 12:00:00'); -- Order ID = 3
-INSERT INTO orders_laptops (order_entity_order_id, laptops_laptop_id, quantity) VALUES (3, 10, 3); -- 3 cái Asus TUF
+INSERT INTO orders (user_profile_id, status, created_at, updated_at) VALUES (4, 'PAID', '2024-02-20 12:00:00', '2024-02-20 12:00:00');
+INSERT INTO orders_laptops (order_entity_order_id, laptops_laptop_id, quantity) VALUES (3, 10, 3);
 INSERT INTO invoices (order_id, total_amount, status, payment_method) VALUES (3, 59970000, 'PAID', 'VNPAY');
 
-INSERT INTO orders (user_profile_id, status, created_at, updated_at) VALUES (5, 'PAID', '2024-07-25 13:00:00', '2024-07-25 13:00:00'); -- Order ID = 4
-INSERT INTO orders_laptops (order_entity_order_id, laptops_laptop_id, quantity) VALUES (4, 1, 2); -- 2 cái MacBook Air
+INSERT INTO orders (user_profile_id, status, created_at, updated_at) VALUES (5, 'PAID', '2024-07-25 13:00:00', '2024-07-25 13:00:00');
+INSERT INTO orders_laptops (order_entity_order_id, laptops_laptop_id, quantity) VALUES (4, 1, 2);
 INSERT INTO invoices (order_id, total_amount, status, payment_method) VALUES (4, 49980000, 'PAID', 'VNPAY');
 
-INSERT INTO orders (user_profile_id, status, created_at, updated_at) VALUES (6, 'PAID', '2024-11-18 14:00:00', '2024-11-18 14:00:00'); -- Order ID = 5
-INSERT INTO orders_laptops (order_entity_order_id, laptops_laptop_id, quantity) VALUES (5, 3, 1); -- 1 cái Dell XPS
+INSERT INTO orders (user_profile_id, status, created_at, updated_at) VALUES (6, 'PAID', '2024-11-18 14:00:00', '2024-11-18 14:00:00');
+INSERT INTO orders_laptops (order_entity_order_id, laptops_laptop_id, quantity) VALUES (5, 3, 1);
 INSERT INTO invoices (order_id, total_amount, status, payment_method) VALUES (5, 32500000, 'PAID', 'VNPAY');
 
 -- --- NĂM 2025 (12 THÁNG) ---
--- (Giả sử ID bắt đầu từ 6)
 INSERT INTO orders (user_profile_id, status, created_at, updated_at) VALUES (2, 'PAID', '2025-01-20 10:00:00', '2025-01-20 10:00:00');
 INSERT INTO orders_laptops (order_entity_order_id, laptops_laptop_id, quantity) VALUES (6, 10, 1);
 INSERT INTO invoices (order_id, total_amount, status, payment_method) VALUES (6, 19990000, 'PAID', 'VNPAY');

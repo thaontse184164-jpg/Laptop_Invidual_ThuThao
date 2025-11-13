@@ -42,10 +42,10 @@ public class DashBoardController {
         LocalDateTime startDateTime = startDate.atStartOfDay();
         LocalDateTime endDateTime = endDate.atTime(23, 59, 59);
 
-        // 6. Vẫn gọi service y hệt như cũ
+        // 6. gọi service
         DashboardDTO dto = dashboardService.getDashboardData(startDateTime, endDateTime);
 
-        // 7. "Bóc tách" DTO và nhét vào Model cho Thymeleaf
+        // 7. Lấy DTO và nhét vào Model cho Thymeleaf
         model.addAttribute("totalProducts", dto.getTotalProducts());
         model.addAttribute("totalUsers", dto.getTotalUsers());
         model.addAttribute("totalOrders", dto.getTotalOrders());
@@ -59,8 +59,6 @@ public class DashBoardController {
         model.addAttribute("startDate", startDate);
         model.addAttribute("endDate", endDate);
 
-        // 9. Trả về tên của file template
-        // (Ví dụ: file "dashboard.html" nằm trong /templates/admin/)
         return "admin/dashboard";
     }
 }
